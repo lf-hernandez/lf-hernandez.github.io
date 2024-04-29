@@ -18,15 +18,47 @@ minify:
   disableXML: true
   minifyOutput: true
 
+menu:
+  main:
+    - identifier: blog
+      name: Blog
+      url: /posts/
+      weight: 10
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 20
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 30
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 40
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 50
+
+
 params:
   env: production 
   title: LFH
   description: "Luis Felipe Hernandez"
-  keywords: [Blog, Portfolio, PaperMod]
-  author: LFH
+  author: felipe
   DateFormat: "January 2, 2006"
   defaultTheme: auto
-  disableThemeToggle: false
+  ShowShareButtons: true
+  ShowReadingTime: true
+  displayFullLangName: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowAllPagesInArchive: true
+  ShowPageNums: true
+  ShowToc: true
 
   homeInfoParams:
     Title: "Hi, I'm Felipe \U0001F44B"
