@@ -1,6 +1,6 @@
 baseURL: https://lfhernandez.com
 languageCode: en-us
-title: LFH
+title: Luis Felipe Hernandez
 theme: PaperMod
 copyright: "© [Luis Felipe Hernandez](https://github.com/lf-hernandez)"
 
@@ -44,8 +44,8 @@ menu:
 
 params:
   env: production 
-  title: LFH
-  description: "Luis Felipe Hernandez"
+  title: Luis Felipe Hernandez
+  description: "Felipe's corner of the web"
   author: felipe
   DateFormat: "January 2, 2006"
   defaultTheme: auto
