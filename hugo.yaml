@@ -1,0 +1,42 @@
+baseURL: https://lf-hernandez.github.io/
+languageCode: en-us
+title: LFH
+theme: PaperMod
+copyright: "© [Luis Felipe Hernandez](https://github.com/lf-hernandez)"
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+enableEmoji: true
+
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+pygmentsUseClasses: true
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production 
+  title: LFH
+  description: "Luis Felipe Hernandez"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: LFH
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto
+  disableThemeToggle: false
+
+  homeInfoParams:
+    Title: "Hi, I'm Felipe \U0001F44B"
+    Content: > 
+      -  Welcome to my corner of the web.
+
+      - I'm a Software Engineer and author this blog.
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/lf-hernandez"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/lf-hernandez/"
