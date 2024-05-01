@@ -59,7 +59,7 @@ params:
   ShowAllPagesInArchive: true
   ShowPageNums: true
   ShowToc: true
-
+  
   homeInfoParams:
     Title: "Hi, I'm Felipe \U0001F44B"
     Content: > 
@@ -72,3 +72,7 @@ params:
       url: "https://github.com/lf-hernandez"
     - name: linkedin
       url: "https://www.linkedin.com/in/lf-hernandez/"
+
+services:
+  googleAnalytics:
+    id: G-QVGGZQW02H
