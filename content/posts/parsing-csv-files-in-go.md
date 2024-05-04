@@ -2,7 +2,7 @@
 title: "Parsing CSV Files in Go"
 date: 2024-04-30T22:16:22-04:00
 summary: "In this post, we'll dive into processing CSV files with Go and its standard library."
-tags: ["go", "csv"]
+tags: ["go"]
 categories: ["go"]
 ---
 ## Introduction
