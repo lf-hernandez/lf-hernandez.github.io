@@ -4,19 +4,15 @@ title: Luis Felipe Hernandez
 theme: PaperMod
 copyright: "© [Luis Felipe Hernandez](https://github.com/lf-hernandez)"
 
+enableEmoji: true
 enableInlineShortcodes: true
 enableRobotsTXT: true
-enableEmoji: true
 
 buildDrafts: false
 buildFuture: false
 buildExpired: false
 
 pygmentsUseClasses: true
-
-minify:
-  disableXML: true
-  minifyOutput: true
 
 menu:
   main:
@@ -41,6 +37,15 @@ menu:
       url: /archives/
       weight: 50
 
+minify:
+  disableXML: true
+  minifyOutput: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
 
 params:
   env: production 
@@ -59,6 +64,9 @@ params:
   ShowAllPagesInArchive: true
   ShowPageNums: true
   ShowToc: true
+  analytics:
+    google:
+      SiteVerificationTag: "G-QVGGZQW02H"
   
   homeInfoParams:
     Title: "Hi, I'm Felipe \U0001F44B"
@@ -72,7 +80,16 @@ params:
       url: "https://github.com/lf-hernandez"
     - name: linkedin
       url: "https://www.linkedin.com/in/lf-hernandez/"
+  
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
 
 services:
   googleAnalytics:
-    id: G-QVGGZQW02H
+    id: "G-QVGGZQW02H"
