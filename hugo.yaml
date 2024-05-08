@@ -16,6 +16,10 @@ pygmentsUseClasses: true
 
 menu:
   main:
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 5
     - identifier: blog
       name: Blog
       url: /posts/
