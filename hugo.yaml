@@ -54,6 +54,7 @@ params:
   author: felipe
   DateFormat: "January 2, 2006"
   defaultTheme: auto
+  comments: true
   ShowShareButtons: true
   ShowReadingTime: true
   displayFullLangName: true
