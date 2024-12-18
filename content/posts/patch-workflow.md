@@ -2,13 +2,11 @@
 title: "Patch Workflow"
 date: 2024-12-17T21:06:23-05:00
 ---
-I will use this post as a reference to look back to and iteratively improve as I continue to learn. 
+This post will serve as a reference for me to revisit and improve upon as I continue learning*
 
-My first few patches were all created using `git format-patch` and `git send-email`. But over my time in the LKMP Summer 2024 program, I've been swayed to use b4 and git worktrees through my interactions with my mentor Ricardo B. Marliere and fellow mentor Javier Carrasco. Interestingly enough, I'm going through a bit of a learning curve. Even in my short time cloning entire git trees and creating branches for each patch and using `git format-patch`, I grew accustomed to that workflow and have struggled to leverage b4 and git worktrees effectively.
+I joined the LFX Mentorship program for the Linux kernel not that long ago, and I've been working on finding an effective workflow for creating and managing patches. Initially, I created all my patches using `git format-patch` and relied on `git send-email` to mail them out. However, during my time in the Linux Kernel Bug Fixing Summer 2024 program (LKMP), I was introduced to `b4` and `git worktree` through interactions with mentors, Ricardo B. Marliere and Javier Carrasco. And while it's evident these two tools aim to make the kernel developer's life easier, I've had a bit of learning curve adapting to them.
 
-This is more of a consequence of my lack of familiarity, and I expect with time and thorough re-reading of the docs I'll get up to speed.
-
-Nonetheless, I'm going to go over my current workflow for Linux:
+Nonetheless, I want document my current workflow for the sake of posterity:
 
 ```bash
 $ git clone --bare git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git ~/Linux/worktrees/.bare && cd ~/Linux/worktrees/.bare
@@ -22,7 +20,7 @@ $ git remote add staging git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/st
 $ git remote add github git@github.com:lf-hernandez/linux.git
 $ git fetch --all
 
-$ git worktree add ../sysctl_patches/mac_hid next/master
+$ git worktree add -b mac_hid_patch ../<related_patches>/mac_hid_patch next/master
 $ b4 prep -n <some-descriptive-name>
 $ vim <file-to-change>.c
 $ git commit -a -s
@@ -34,29 +32,29 @@ $ b4 send --reflect
 $ b4 send
 ```
 
-A couple of things to note for context:
-1) I have all my Linux-related work in my home directory ~/Linux
-2) I have all my patches conveniently stored in a directory which I reference via $PATCH_DIR env var
-3) I threw in some remotes I've been working with recently but this would change based on the subsystem the changes I'm doing relate to and whether there is a git repository for it
+### Breakdown
 
-So I start off cloning a bare kernel tree repository, specifically mainline. This is a special type of clone that only contains the .git/, no working directory with its files. This is a prereq for creating worktrees. From my understanding, it is a central hub of sorts for my worktrees. All the history and repository data will be tracked there and the worktree directories of the checked out branches will hold the actual files. 
+I start by cloning a bare repository, specifically the mainline kernel tree. This is a special type of repository that only contains the `.git/` directory and no working directory with sources. This will help manage my worktrees and acts as a central hub for tracking repository history and data.
 
-I then proceed to add remotes I'm interested in. These will serve as bases to branch off for my worktrees.
+Next, I add remotes I'm interested in working with as well as my fork of the kernel to aid in collaborative patches. These will serve as the base for my worktrees.
 
-worktree add is what actually creates the working directory, I pass the path ending the name of the new branch I want to create and which remote I want to track from. Although in this case I'm using an intermediate directory to house a few related patches. This is more of an organizational preference on my end. This may change, but it's something I'm trying out.
+`git worktree add` is what actually creates the working directory for a specific branch. I pass the path and branch name. In this case I'm using an intermediate directory to house related patches. This is an organizational choice on my end, but may change as my workflow evolves.
 
-Now that I have my worktree in place, I proceed to setup my patch with b4. I've yet to create a patch series so in this case I'm leaving the cover letter empty for the most part. In most cases, you would use this as an opportunity to explain what the patch series is aiming to achieve and why. So I create the b4 topical branch and make my changes. Once I've tested the changes (compiling, testing change fixes an issue via qemu/gdb, running kunit, etc.) I create the commit and sign it.
+Now that I have my worktree in place, I prepare my patch with `b4`. I've yet had the need to create a patch series. All my patches thus far have dealt with single file changesets so I'm leaving the cover letter empty for now. In most cases, you would use this as an opportunity to explain what the patch series is aiming to achieve and why. Once I've created the b4 topical branch and made and tested my changes (compiling, testing potential fixes via qemu/gdb, running kunit, etc.), I stage my changes, create the commit and sign it.
 
-Normally here is where I would manually invoke checkpatch against a recently created patch from that commit. Instead I use b4 to grab the appropriate recipients and add them to the patch. Instead of manually running checkpatch I use `b4 prep --check` which does so under the hood with some extra flags I wasn't using before `--no-summary --mailback --showfile` and assuming everything checks out I go ahead and write a copy of the patch to my patches directory (this has already saved me a few times, it's perfect for looking back on previous work or in my most recent case running `b4 shazam` on it to apply to a fresh patch because I had to start from scratch). From there I send out a test email to myself via `--reflect` and check that things look ok before doing the actual send. 
+Normally here is where I would manually run `get_maintainers` (and in some cases `git blame`) to get the list of recipients for the patch and manually add them with `git format-patch`, now I use `b4` to grab the appropriate recipients and add them to the patch automatically. Similarly I would also manually invoke `checkpatch` against a recently created patch and fix any issues before proceeding, instead I now use `b4 prep --check` which does so under the hood. Assuming everything checks out, I go ahead and write a copy of the patch to my patches directory (this has already saved me a few times, it's perfect for looking back on previous work or in my most recent case running `b4 shazam` on it to apply an existing patch). From there I send out a test email to myself via `--reflect` and confirm that things look correct before sending.
 
-This is where I'm at the moment, I've only sent out a couple of patches using this approach and have made my share of mistakes on both. It happens, and I'm learning more and more from these experiences.
+This is where I’m at for now. I’ve only sent a few patches using this approach, and, as expected, I’ve made mistakes along the way. But that’s part of the learning process, and I’m gaining more experience with every step.
 
-For solid references on these tools check out Ricardo's and Javi's blogs:
-[A better workflow for kernel debugging](https://marliere.net/posts/2/)
-[b4 for Linux kernel contributors](https://hackerbikepacker.com/b4-for-kernel-contributors)
+For further reading, I highly recommend checking out Ricardo's and Javi's blogs:
 
-And ofc the docs:
+[A better workflow for kernel debugging](https://marliere.net/posts/2/) by Ricardo B. Marliere
+
+[b4 for Linux kernel contributors](https://hackerbikepacker.com/b4-for-kernel-contributors) by Javier Carrasco
+
+And of course, the docs:
+
 [Git Worktree](https://git-scm.com/docs/git-worktree)
+
 [b4](https://b4.docs.kernel.org/en/latest/index.html)
 
-Suggestions are welcomed!
