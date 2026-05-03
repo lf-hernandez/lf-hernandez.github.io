@@ -7,12 +7,11 @@ copyright: "© [Luis Felipe Hernandez](https://github.com/lf-hernandez)"
 enableEmoji: true
 enableInlineShortcodes: true
 enableRobotsTXT: true
+enableGitInfo: true
 
 buildDrafts: false
 buildFuture: false
 buildExpired: false
-
-pygmentsUseClasses: true
 
 menu:
   main:
@@ -52,7 +51,7 @@ outputs:
     - JSON
 
 params:
-  env: production 
+  env: production
   title: Luis Felipe Hernandez
   description: "Felipe's corner of the web"
   author: felipe
@@ -69,10 +68,6 @@ params:
   ShowAllPagesInArchive: true
   ShowPageNums: true
   ShowToc: true
-  analytics:
-    google:
-      SiteVerificationTag: "G-QVGGZQW02H"
-  
   homeInfoParams:
     Title: "Hi, I'm Felipe \U0001F44B"
     Content: > 
