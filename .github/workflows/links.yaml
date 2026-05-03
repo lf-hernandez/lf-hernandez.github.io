@@ -9,9 +9,17 @@ on:
     - cron: "0 8 * * 1"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   linkcheck:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       HUGO_VERSION: 0.160.1
     steps:
