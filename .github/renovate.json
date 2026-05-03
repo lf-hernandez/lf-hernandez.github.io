@@ -7,12 +7,19 @@
   "packageRules": [
     {
       "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
       "groupName": "GitHub Actions",
-      "automerge": false
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["gohugoio/hugo"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["^\\.github/workflows/.+\\.ya?ml$"],
       "matchStrings": ["HUGO_VERSION: (?<currentValue>[\\d.]+)"],
       "depNameTemplate": "gohugoio/hugo",
