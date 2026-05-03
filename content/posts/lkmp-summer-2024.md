@@ -1,8 +1,9 @@
 ---
 title: "LKMP Bug Fixing Summer 2024"
 date: 2024-12-23T03:41:38-05:00
+summary: "A recap of my Linux Kernel Mentorship Program Bug Fixing Summer 2024 experience — contributions, tools, speaking engagements, and lessons learned."
 ---
-# My Linux Kernel Mentorship Journey
+## My Linux Kernel Mentorship Journey
 
 Engaging with the Linux Kernel community has been a transformative experience. It allowed me to take the leap and explore my interests in low-level programming, Linux, and open-source development. During the Linux Kernel Mentorship Program Bug Fixing Summer 2024, I not only had the opportunity to pick up new technical skills but also gained a deeper understanding of the various processes that go into Linux kernel development. I want to use this post to outline key aspects of my journey, including my contributions, tools I used, speaking engagements, and resources that helped me along the way. I couldn't be happier with my decision to apply and participate in this program.
 

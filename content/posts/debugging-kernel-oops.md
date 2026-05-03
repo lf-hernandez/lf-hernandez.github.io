@@ -1,6 +1,7 @@
 ---
 title: "Debugging Kernel Oops"
 date: 2024-06-01T19:33:02-04:00
+summary: "A practical guide to reading and debugging Linux kernel Oops messages, covering report anatomy, System.map lookups, and debugging with objdump and gdb."
 ---
 ## Introduction
 

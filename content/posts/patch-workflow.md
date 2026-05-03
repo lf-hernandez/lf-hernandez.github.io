@@ -1,6 +1,7 @@
 ---
 title: "Patch Workflow"
 date: 2024-12-17T21:06:23-05:00
+summary: "My current Linux kernel patch workflow using git worktree and b4, from cloning a bare repository to sending patches upstream."
 ---
 This post will serve as a reference for me to revisit and improve upon as I continue learning*
 

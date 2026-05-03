@@ -3,6 +3,7 @@ title: "Input validation for the security-minded developer"
 date: 2024-05-03T11:48:16-04:00
 tags: ["go", "security", "application security"]
 categories: ["go", "security", "application security"]
+summary: "A practical look at input validation for web developers, covering numbers, text, SQL injection, CSV injection, and insecure deserialization with Go code examples."
 ---
 If you spent any time developing web applications you've come across a need to validate input, whether it be on forms or API endpoints. In an ideal world, we'd only deal with trusted users with good intentions and completely close off any interactions with untrusted users. But the reality is that most applications need to deal with input, and we can't always guarantee that it's coming from a trusted source or that a malicious threat actor isn't sitting in between the connection. So validating said input is a first line of defense from being compromised. Whether the threat is a data leak, arbitrary code execution, state manipulation, or simply causing the program to act in a way it was not designed to.
 
