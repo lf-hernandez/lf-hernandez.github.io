@@ -1,0 +1,25 @@
+name: Spell Check
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "content/**/*.md"
+      - "cspell.json"
+  workflow_dispatch:
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Run cspell
+        uses: streetsidesoftware/cspell-action@v6
+        with:
+          files: "content/**/*.md"
+          config: cspell.json
+          strict: true
+          inline: warning
