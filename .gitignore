@@ -5,3 +5,9 @@
 /public
 /resources/_gen/
 
+.idea/
+.vscode/
+node_modules/
+*.log
+.env
+.env.*
