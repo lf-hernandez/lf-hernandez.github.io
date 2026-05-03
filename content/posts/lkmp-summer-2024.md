@@ -72,7 +72,7 @@ Held on June 22, 2024, this was a 4-hour workshop where I, alongside a fellow Or
 
 On September 19, 2024, I delivered a presentation at Tampa Bay DevOps Days, sharing insights from my kernel development journey as well as sharing with the audience the various programs offered by LFX and how to apply to them.
 
-### Orlando Devs Ignite: "Unit Testing the Linux Kernel" [Event Link](https://orlandodevs.com/ignite/)
+### Orlando Devs Ignite: "Unit Testing the Linux Kernel"
 
 ODevs Ignite The Holidays held on December 18, 2024, I delivered an ignite talk titled "Unit Testing the Linux Kernel." This presentation covered the role of KUnit in kernel development for ensuring code reliability, as a means to find potential bugs in existing code, and form of technical documentation for various kernel APIs and functions. I provided a practical guide to creating and executing KUnit tests through my own patches/test suites I worked on during the program.
 
