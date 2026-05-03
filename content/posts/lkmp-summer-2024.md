@@ -16,7 +16,7 @@ lib/math: Add int_sqrt test suite: This patch implemented a test suite for the i
 
 lib/math: Add int_pow test suite: Expanded the math library’s test coverage by unit testing the the integer power function.
 
-lib/math: Move kunit tests into tests/ subdir: Organized all math lib tests in their own tests/ dir in order to better organize directory structure and follow conventions found else where in the kernel. KUnit is relatively new (officially introduced in 5.5) and as tests have been added, maintainer David Gow gave me valuable feedback with regards to conventions (nomenclautre and organization) which prompted me to follow similar efforts carried out by Kees Cook accross the lib/ subsystem. 
+lib/math: Move kunit tests into tests/ subdir: Organized all math lib tests in their own tests/ dir in order to better organize directory structure and follow conventions found else where in the kernel. KUnit is relatively new (officially introduced in 5.5) and as tests have been added, maintainer David Gow gave me valuable feedback with regards to conventions (nomenclature and organization) which prompted me to follow similar efforts carried out by Kees Cook across the lib/ subsystem. 
 
 ### Code Refinement and Structural Improvements
 
