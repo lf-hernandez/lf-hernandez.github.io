@@ -76,7 +76,7 @@ Total idle time: 0.020595 seconds
 This prints after the file is read
 ```
 
-Functions like `fopen`, `fread`, and `flcose` block the flow of execution until the I/O operation is completed.
+Functions like `fopen`, `fread`, and `fclose` block the flow of execution until the I/O operation is completed.
 I'm leveraging the `time.h` header to help simulate the amount of time the CPU is idle waiting for the I/O operation to finish. The calculation is done by simply diving the delta of end/start times by a predefined constant that represents the number of clock cycles per second. My specific system is set to `1000000` (1 million) ticks per second.
 
 ### Non-blocking I/O

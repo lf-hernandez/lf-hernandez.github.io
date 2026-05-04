@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git commit*)",
+            "command": "if command -v npx >/dev/null 2>&1; then npx cspell lint --config cspell.json \"content/**/*.md\" --no-progress; elif command -v cspell >/dev/null 2>&1; then cspell lint --config cspell.json \"content/**/*.md\" --no-progress; fi",
+            "statusMessage": "Spell-checking content..."
+          }
+        ]
+      }
+    ]
+  }
+}

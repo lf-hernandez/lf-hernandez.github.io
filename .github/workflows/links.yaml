@@ -49,6 +49,7 @@ jobs:
         with:
           args: >-
             --base-url https://lfhernandez.com
+            --remap "https://lfhernandez.com file://${{ github.workspace }}/public"
             --exclude-loopback
             --exclude "^https://www\.linkedin\.com"
             --exclude "apple-touch-icon"
