@@ -6,6 +6,11 @@ copyright: "© [Luis Felipe Hernandez](https://github.com/lf-hernandez)"
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
 enableEmoji: true
 enableInlineShortcodes: true
 enableRobotsTXT: true
