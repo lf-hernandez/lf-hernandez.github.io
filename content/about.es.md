@@ -1,7 +1,6 @@
 ---
 title: "Sobre mí"
 layout: about
-draft: true
 ---
 
-Mi nombre es Luis Felipe Hernandez. Soy programador.
+Mi nombre es Luis Felipe Hernandez. Soy programador. Disfruto trabajar con Go, Python, TypeScript/JavaScript, C, Node, PostgreSQL, Kubernetes y Linux.
