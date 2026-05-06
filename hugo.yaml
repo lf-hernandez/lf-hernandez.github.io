@@ -1,8 +1,10 @@
 baseURL: https://lfhernandez.com
-languageCode: en-us
 title: LFH
 theme: PaperMod
 copyright: "© [Luis Felipe Hernandez](https://github.com/lf-hernandez)"
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
 
 enableEmoji: true
 enableInlineShortcodes: true
@@ -12,33 +14,6 @@ enableGitInfo: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
-
-menu:
-  main:
-    - identifier: about
-      name: About
-      url: /about/
-      weight: 5
-    - identifier: blog
-      name: Blog
-      url: /posts/
-      weight: 10
-    - identifier: search
-      name: Search
-      url: /search/
-      weight: 20
-    - identifier: categories
-      name: Categories
-      url: /categories/
-      weight: 30
-    - identifier: tags
-      name: Tags
-      url: /tags/
-      weight: 40
-    - identifier: archives
-      name: Archives
-      url: /archives/
-      weight: 50
 
 minify:
   disableXML: true
@@ -50,9 +25,87 @@ outputs:
     - RSS
     - JSON
 
+languages:
+  en:
+    languageCode: en-us
+    languageName: English
+    weight: 1
+    title: LFH
+    params:
+      homeInfoParams:
+        Title: "Hi, I'm Felipe \U0001F44B"
+        Content: >
+          -  Welcome to my corner of the web.
+
+          - I'm a Software Engineer and author this blog.
+    menu:
+      main:
+        - identifier: about
+          name: About
+          url: /about/
+          weight: 5
+        - identifier: blog
+          name: Blog
+          url: /posts/
+          weight: 10
+        - identifier: search
+          name: Search
+          url: /search/
+          weight: 20
+        - identifier: categories
+          name: Categories
+          url: /categories/
+          weight: 30
+        - identifier: tags
+          name: Tags
+          url: /tags/
+          weight: 40
+        - identifier: archives
+          name: Archives
+          url: /archives/
+          weight: 50
+
+  es:
+    languageCode: es-co
+    languageName: Español
+    weight: 2
+    title: LFH
+    params:
+      homeInfoParams:
+        Title: "Hola, soy Felipe \U0001F44B"
+        Content: >
+          -  Bienvenido a mi rincón de la web.
+
+          - Soy ingeniero de software y autor de este blog.
+    menu:
+      main:
+        - identifier: about
+          name: Sobre mí
+          url: /es/about/
+          weight: 5
+        - identifier: blog
+          name: Blog
+          url: /es/posts/
+          weight: 10
+        - identifier: search
+          name: Buscar
+          url: /es/search/
+          weight: 20
+        - identifier: categories
+          name: Categorías
+          url: /es/categories/
+          weight: 30
+        - identifier: tags
+          name: Etiquetas
+          url: /es/tags/
+          weight: 40
+        - identifier: archives
+          name: Archivo
+          url: /es/archives/
+          weight: 50
+
 params:
   env: production
-  title: Luis Felipe Hernandez
   description: "Felipe's corner of the web"
   author: felipe
   DateFormat: "January 2, 2006"
@@ -68,19 +121,13 @@ params:
   ShowAllPagesInArchive: true
   ShowPageNums: true
   ShowToc: true
-  homeInfoParams:
-    Title: "Hi, I'm Felipe \U0001F44B"
-    Content: > 
-      -  Welcome to my corner of the web.
-
-      - I'm a Software Engineer and author this blog.
 
   socialIcons:
     - name: github
       url: "https://github.com/lf-hernandez"
     - name: linkedin
       url: "https://www.linkedin.com/in/lf-hernandez/"
-  
+
   fuseOpts:
     isCaseSensitive: false
     shouldSort: true
