@@ -11,11 +11,11 @@ Supongamos que trabajas en una industria regulada, como Medicina. Partiendo de e
 
 Por eso es que preguntar cuál es la capital de Colombia nos da una respuesta correcta.
 
-![Pregunta a un LLM, cuál es la capital de Colombia, respuesta correcta... Bogotá](consulta_capital_colombia.png)
+![Pregunta a un LLM, cuál es la capital de Colombia, respuesta correcta... Bogotá](/posts/simple-rag/consulta_capital_colombia.png)
 
 Pero preguntar cómo se llamaba mi primera mascota no tanto.
 
-![Pregunta a un LLM, cómo se llamaba mi primera mascota, el modelo no sabe](consulta_primera_mascota.png)
+![Pregunta a un LLM, cómo se llamaba mi primera mascota, el modelo no sabe](/posts/simple-rag/consulta_primera_mascota.png)
 
 Pero no estamos limitados a los datos de entrenamiento, hay varias técnicas para mejorar la calidad de respuesta. Una de ellas, y el tema principal de esta serie, es RAG (Retrieval Augmented Generation o Generación Aumentada por Recuperación). Elaboraré específicamente sobre naive RAG (RAG ingenuo). Es la versión más básica, sin re-ranking, sin reescritura de consulta, sin filtros adicionales. Buena base para entender la mecánica antes de meterle complejidad.
 
