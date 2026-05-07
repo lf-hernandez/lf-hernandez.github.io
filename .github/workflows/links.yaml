@@ -55,6 +55,7 @@ jobs:
             --exclude "apple-touch-icon"
             --exclude "favicon"
             --exclude "safari-pinned-tab"
+            --exclude "^https://marliere\.net"
             --exclude "^https://reddit\.com/submit"
             --exclude "^https://news\.ycombinator\.com/submitlink"
             --timeout 20
