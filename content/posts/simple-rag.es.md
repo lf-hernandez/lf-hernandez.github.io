@@ -83,7 +83,7 @@ flowchart TB
         direction LR
         Q[Consulta<br/>del usuario] --> Embed2[Generar<br/>embedding]
         Embed2 --> Search[Búsqueda<br/>por similitud]
-        Search --> Topk[Top-k chunks<br/>relevantes]
+        Search --> Topk[Fragmentos<br/>relevantes]
     end
 
     subgraph Generation["3. Generación"]
