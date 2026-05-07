@@ -7,7 +7,9 @@ categories: ["ia"]
 series: ["Construyendo RAG"]
 ---
 
-Supongamos que trabajas en una industria regulada, como Medicina. Partiendo de esa premisa, es muy importante que el resultado de una consulta a un sistema utilizando un LLM (Modelo de Lenguaje Grande) tenga los detalles específicos del dominio en su contexto. En otras palabras, queremos aumentar el prompt en sí. ¿Y por qué? Pues los LLMs son entrenados con un corpus finito y con una fecha de corte. Si los requisitos del sistema dependen de información privada (récords médicos, documentos internos, historiales de chat internos, documentos legales, etc.), el modelo simplemente nunca la vio y la calidad de la respuesta comienza a degradar.
+## ¿Qué pasa cuando un LLM no sabe cómo responder tu consulta?
+
+Supongamos que trabajas en una industria regulada, como Medicina. Partiendo de esa premisa, es muy importante que el resultado de una consulta a un sistema utilizando un LLM (Modelo de Lenguaje Grande) tenga los detalles específicos del dominio en su contexto. En otras palabras, queremos aumentar el prompt en sí. ¿Y por qué? Pues los LLMs son entrenados con un corpus finito y con una fecha de corte. Si los requisitos del sistema dependen de información privada (récords médicos, documentos internos, historiales de chat internos, documentos legales, etc.), el modelo simplemente nunca la vio y la calidad de la respuesta comienza a degradar. Preguntarle al sistema cuál es el protocolo de tratamiento interno de tu hospital para cierta condición, o qué dice el historial clínico de un paciente en particular, va a resultar en una respuesta incompleta o directamente incorrecta.
 
 Por eso es que preguntar cuál es la capital de Colombia nos da una respuesta correcta.
 
@@ -46,16 +48,16 @@ Desglosemos el acrónimo.
 ```mermaid
 flowchart TB
     subgraph Indexacion["Fase de Indexación"]
-        A[Fuente de Datos<br/>API, archivos] --> B[Limpieza<br/>normalizar]
+        A[Fuente de Datos<br/>API, archivos] --> B[Limpiar]
         B --> C[Chunking<br/>fragmentar]
         C --> D[Embedding<br/>vectorizar]
         D --> E[(Vector Store)]
     end
 
     subgraph Consulta["Fase de Consulta"]
-        U[Usuario<br/>pregunta] --> S[Tu Servidor<br/>orquestador]
+        U[Usuario<br/>pregunta] --> S[Orquestador]
         S --> Q[Vectorizar consulta]
-        Q --> R[Buscar similitud<br/>top-k chunks]
+        Q --> R[Buscar similitud]
         E -.recupera.-> R
         R --> P[Construir Prompt<br/>contexto + query]
         P --> L[Llamar LLM<br/>API]
