@@ -1,0 +1,8 @@
+{
+  "name": "lfhernandez-blog",
+  "private": true,
+  "description": "Spell-check support only. Hugo build does not depend on these.",
+  "devDependencies": {
+    "@cspell/dict-es-es": "^3.0.0"
+  }
+}

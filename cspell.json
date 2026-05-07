@@ -2,7 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
   "language": "en",
+  "import": ["@cspell/dict-es-es/cspell-ext.json"],
   "files": ["content/**/*.md"],
+  "overrides": [
+    {
+      "filename": "**/*.es.md",
+      "language": "en,es"
+    }
+  ],
   "ignoreRegExpList": [
     "https?://\\S+",
     "`[^`]+`",
@@ -120,6 +127,10 @@
     "kqueue",
     "IOCP",
     "checkpatch",
-    "shazam"
+    "shazam",
+    "reescritura",
+    "semánticamente",
+    "indexación",
+    "vectorizamos"
   ]
 }
