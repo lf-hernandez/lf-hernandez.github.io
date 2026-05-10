@@ -1,5 +1,5 @@
 ---
-title: "RAG Sencillo, Parte 1"
+title: "RAG Sencillo: Parte 1"
 date: 2026-05-06T00:00:00-07:00
 summary: "Una mirada de alto nivel a Retrieval Augmented Generation... por qué lo necesitamos, qué es, y cómo se ve la arquitectura. Primera parte de una serie."
 tags: ["rag", "llm", "ia"]
