@@ -22,6 +22,11 @@ ShowRssButtonInSectionTermList: true
 #   relative: false
 #   hidden: false
 ---
+
+> **En esta serie**
+> - [Parte 1 — ¿Qué es RAG y cómo funciona?](/posts/simple-rag/)
+> - **Parte 2** — Implementación práctica con CVEs *(este artículo)*
+
 # Meta
 
 La meta de este artículo es demostrar un sistema RAG funcional utilizando CVEs como fuente de datos. ¿Por qué? CVE (Common Vulnerabilities and Exposures) es un estándar de industria internacional, un diccionario que cataloga vulnerabilidades de ciberseguridad de software y hardware y nos permite explorar un caso de uso donde la precisión importa. CVEs se descubren y se publican en un promedio de 130 por día en 2026. Así que es casi garantizado que cualquier modelo no tendrá el catálogo al día, así que podemos aumentar el contexto con nuestro sistema RAG.
