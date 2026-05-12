@@ -37,7 +37,7 @@ jobs:
         run: npm ci --no-audit --no-fund
 
       - name: Run cspell
-        uses: streetsidesoftware/cspell-action@v6
+        uses: streetsidesoftware/cspell-action@v8
         with:
           files: "content/**/*.md"
           config: cspell.json
