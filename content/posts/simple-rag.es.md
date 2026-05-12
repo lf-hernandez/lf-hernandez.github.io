@@ -10,8 +10,8 @@ TocOpen: true
 ---
 
 > **En esta serie**
-> - **Parte 1** — ¿Qué es RAG y cómo funciona? *(este artículo)*
-> - [Parte 2 — Implementación práctica con CVEs](/posts/simple-rag-2/)
+> - **Parte 1**: ¿Qué es RAG y cómo funciona? *(este artículo)*
+> - [Parte 2: Implementación práctica con CVEs](/posts/simple-rag-2/)
 
 ## ¿Qué pasa cuando un LLM no sabe cómo responder tu consulta?
 

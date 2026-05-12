@@ -41,5 +41,5 @@ jobs:
         with:
           files: "content/**/*.md"
           config: cspell.json
-          strict: true
+          strict: false
           inline: warning

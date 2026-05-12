@@ -24,18 +24,18 @@ ShowRssButtonInSectionTermList: true
 ---
 
 > **En esta serie**
-> - [Parte 1 — ¿Qué es RAG y cómo funciona?](/posts/simple-rag/)
-> - **Parte 2** — Implementación práctica con CVEs *(este artículo)*
+> - [Parte 1: ¿Qué es RAG y cómo funciona?](/posts/simple-rag/)
+> - **Parte 2**: Implementación práctica con CVEs *(este artículo)*
 
-# Meta
+## La meta
 
-La meta de este artículo es demostrar un sistema RAG funcional utilizando CVEs como fuente de datos. ¿Por qué? CVE (Common Vulnerabilities and Exposures) es un estándar de industria internacional, un diccionario que cataloga vulnerabilidades de ciberseguridad de software y hardware y nos permite explorar un caso de uso donde la precisión importa. CVEs se descubren y se publican en un promedio de 130 por día en 2026. Así que es casi garantizado que cualquier modelo no tendrá el catálogo al día, así que podemos aumentar el contexto con nuestro sistema RAG.
+En la primera parte hablamos del qué y el por qué de RAG. Ahora vamos a ver como es la implementacion. Como fuente de datos vamos a usar CVEs (Common Vulnerabilities and Exposures), un estándar internacional que cataloga vulnerabilidades de ciberseguridad de software y hardware. ¿Por qué CVEs? Se publican unos 130 por día en 2026, así que es casi garantizado que cualquier modelo no tenga el catálogo al día. Un caso ideal donde aumentar el contexto con RAG vale la pena.
 
-La meta en esta parte es crear la fase de indexación. Como elaboré en la primera parte, la fase de indexación pasa offline en el sentido de que no requiere que indexemos la fuente de datos en cada solicitud/consulta.
+En esta parte nos enfocamos en la fase de indexación. Como mencioné antes, la indexación pasa offline; no toca correrla en cada consulta.
 
-La fuente de datos la vamos a obtener de Kaggle. Una plataforma para todo lo relacionado con la ciencia de datos y ML (Machine Learning). La vamos a utilizar principalmente para obtener la fuente de datos.
+La fuente la sacamos de Kaggle, una plataforma de datasets y ML (Machine Learning). Vamos a empezar con un dataset sencillo y popular, [CVE (Common Vulnerabilities and Exposures)](https://www.kaggle.com/datasets/andrewkronser/cve-common-vulnerabilities-and-exposures), que está un poco desactualizado (solo llega al 2019) pero sirve para establecer la base. Se puede bajar de dos formas: manualmente desde la web (descargando el zip) o creando una cuenta de Kaggle y usando el cliente Kaggle CLI para hacerlo programáticamente.
 
-Vamos a comenzar con una sencilla y popular, [CVE (Common Vulnerabilities and Exposures)](https://www.kaggle.com/datasets/andrewkronser/cve-common-vulnerabilities-and-exposures), que está un poco desactualizada (solo tiene datos hasta el 2019) pero nos va a servir para establecer una base en el concepto. Pueden obtener la fuente manualmente via la web y descargando el archivo zip o creando una cuenta de Kaggle, descargando el cliente Kaggle CLI y hacerlo programáticamente. De igual manera, solo vamos a trabajar con el archivo `cve.csv`. Haremos una modificación pequeña, la primera columna de la primera hilera está en blanco. Pero observando el contenido sabemos que es el identificador del CVE, entonces sencillamente le daremos el nombre `id` para poder consumir y analizar el documento programáticamente. El resto de las columnas que vamos a utilizar (`cwe_name`, `summary`, `cvss`) ya vienen nombradas en el archivo original.
+Solo vamos a trabajar con el archivo `cve.csv`. Una nota: la primera columna de la primera fila viene en blanco. Observando el contenido sabemos que es el identificador del CVE, así que más adelante le ponemos el nombre `id` programáticamente al cargar el CSV. El resto de columnas que usamos (`cwe_name`, `summary`, `cvss`) ya vienen nombradas.
 
 ## Configuración
 
@@ -52,13 +52,14 @@ touch indexacion.py main.py
 mkdir data
 mv Downloads/cve.csv data/
 ```
-## Almacenamiento Vectorial
 
-Vamos a utilizar ChromaDB que es una base de datos de código abierto (Open Source) y liviana. Nos permitirá crear un índice de búsqueda semántica para texto, imágenes o audio para aplicaciones RAG.
+## Almacenamiento vectorial
 
-Conceptualmente nos enfocaremos en un solo primitivo, Collections, que establece una colección de embeddings.
+Vamos a usar ChromaDB, una base de datos de código abierto (Open Source) y liviana, que nos permite crear un índice de búsqueda semántica sobre texto, imágenes o audio para aplicaciones RAG.
 
-Iniciaremos el cliente persistente primero:
+Solo nos interesa una primitiva: `Collection`, que básicamente es una agrupación de embeddings.
+
+Arrancamos con el cliente persistente:
 
 ```python
 # indexacion.py
@@ -70,29 +71,29 @@ client = chromadb.PersistentClient(path="./chroma")
 
 ```
 
-ChromaDB ofrece 2 otros tipos de clientes, cloud y in-memory. Cloud requiere una cuenta Chroma Cloud y para nuestro uso de aprendizaje e experimentación es un poco excesivo. In-memory crea un servidor efímero, es útil para experimentación o con un Jupyter Notebook pero para nuestro uso queremos un cliente persistente que almacena la base de datos localmente (chroma/, en nuestro caso).
+ChromaDB ofrece dos tipos más de clientes: cloud y in-memory. Cloud requiere una cuenta de Chroma Cloud, lo cual es un poco excesivo para experimentar. In-memory crea un servidor efímero, es útil para pruebas rápidas o con un Jupyter Notebook, pero acá queremos persistencia local (en `./chroma/`, en nuestro caso).
 
-## Creando una Colección
+## Creando una colección
 
-Ya teniendo nuestro cliente en su lugar, procedemos a crear nuestra colección que contendrá nuestros embeddings de CVEs.
+Ya con el cliente listo, creamos la colección que va a contener los embeddings de los CVEs.
 
 ```python
 collection = client.get_or_create_collection(name="CVEs")
 ```
 
-## Procesando y Creando los Embeddings
+## Procesando y creando los embeddings
 
-Podríamos utilizar la API de OpenAI para crear nuestros embeddings, pero en este caso vamos a utilizar algo un poco más sencillo, Sentence Transformers. Es un framework que se especializa en embeddings de oración, texto e imágenes. Normalmente se recomienda utilizar OpenAI Embeddings API, pero para salvarnos el costo, me parece que sentence-transformers cumple su función en nuestro caso, y nos da un poco más de flexibilidad.
+Podríamos usar la API de OpenAI para los embeddings, pero acá vamos por algo un poco más sencillo: Sentence Transformers. Es un framework que se especializa en embeddings de oración, texto e imágenes. Normalmente la recomendación es la OpenAI Embeddings API, pero para ahorrarnos el costo me parece que sentence-transformers cumple la función y nos da un poco más de flexibilidad.
 
 ```python
 model = SentenceTransformer("all-MiniLM-L6-v2")
 ```
 
-Vamos a utilizar el modelo pre-entrenado, all-MiniLM-L6-v2, ya que nos ofrece un buen balance entre calidad y velocidad.
+Usamos el modelo pre-entrenado `all-MiniLM-L6-v2`, que ofrece un buen balance entre calidad y velocidad.
 
-## Funciones Auxiliares
+## Funciones auxiliares
 
-Antes de seguir a la ingestión de la fuente de datos vamos a crear unas funciones auxiliares para poder procesar nuestros registros de CVEs. Algo que se puede observar muy claramente es que no tenemos un nivel de severidad. Si, existe un CVSS que nos da el valor numeral pero si queremos hacer una consulta en lenguaje natural sería un poco más rápido tener la asignación a mano:
+Antes de seguir con la ingestión, creamos unas funciones auxiliares para procesar los registros de CVEs. Algo que llama la attencion casi de inmediato es que el dataset no incluye nivel de severidad. Sí, existe el CVSS que da el valor numérico, pero si queremos hacer una consulta en lenguaje natural conviene tener la categoría a mano:
 
 ```python
 def get_severity(cvss: str) -> str:
@@ -113,31 +114,41 @@ def get_severity(cvss: str) -> str:
             return "Unknown"
 ```
 
-Y también queremos normalizar los fragmentos para poder crear el embedding con más precisión relativa a la información que queremos.
+Antes de seguir vale la pena hablar de chunking. En este caso no nos toca: cada CVE es un registro corto que cabe cómodamente en un solo embedding. El chunking entra cuando la fuente son documentos largos (regulaciones, manuales, libros), no es nuestro caso.
+
+Lo que sí queremos hacer es construir el documento que va a ir al embedding. Darle al modelo un formato consistente ayuda a que el embedding capture lo importante en vez de ruido. Y un detalle más: solo queremos meter contenido semántico en el embedding. El identificador del CVE es una cadena única que el modelo nunca ha visto, y el CVSS es solo un número... ninguno aporta significado al vector. Esos los dejamos como metadata; al embedding solo le pasamos el nombre canónico de la vulnerabilidad y el resumen.
 
 ```python
-def normalize(cve: pd.Series) -> str:
-    return f"CVE ID: {cve['id']}\nCWE Name: {cve['cwe_name']}\nSummary: {cve['summary']}\nCVSS: {cve['cvss']}"
+def build_document(cve: pd.Series) -> str:
+    cwe = cve["cwe_name"] if pd.notna(cve["cwe_name"]) else ""
+    summary = cve["summary"] if pd.notna(cve["summary"]) else ""
+    return f"{cwe}. {summary}".strip(". ")
 ```
 
-Como pueden ver, creamos cada fragmento a partir de 4 atributos: El identificador, nombre canónico de la vulnerabilidad, un resumen de qué trata y el puntaje de CVSS.
+El `pd.notna(...)` es por las filas donde alguno de los dos campos viene vacío. Sin ese chequeo, pandas mete un `NaN` que la f-string convierte en el literal `"nan"`, y terminaríamos embebiendo basura. El identificador, el puntaje de CVSS y la severidad ya resuelta los guardamos como metadata. ChromaDB las usa como filtros en la consulta. Por ejemplo, "tráeme CVEs de severidad `Critical` relacionados con SQL injection".
 
-## Ingeriendo la fuente de datos
+## Ingiriendo la fuente de datos
 
-Bueno ya tenemos lo básico para poder ingerir los CVEs, vamos a utilizar Pandas (una librería para poder manejar y analizar datos, nos ayudará específicamente para manejar el archivo CSV).
+Bueno, ya tenemos lo básico para ingerir los CVEs. Vamos a usar Pandas, una librería para analizar datos tabulares, perfecta para el CSV.
 
 ```python
 def ingest(path: str):
     df = pd.read_csv(path)
+    df.rename(columns={df.columns[0]: "id"}, inplace=True)
 
     documents = []
     ids = []
     metadatas = []
 
     for _, row in df.iterrows():
-        documents.append(normalize(row))
+        documents.append(build_document(row))
         ids.append(str(row["id"]))
-        metadatas.append({"severity": get_severity(row["cvss"])})
+        metadatas.append({
+            "cve_id": str(row["id"]),
+            "cvss": float(row["cvss"]) if pd.notna(row["cvss"]) else 0.0,
+            "severity": get_severity(row["cvss"]),
+            "cwe_name": str(row["cwe_name"]) if pd.notna(row["cwe_name"]) else "",
+        })
 
     embeddings = model.encode(documents, show_progress_bar=True).tolist()
 
@@ -154,19 +165,104 @@ def ingest(path: str):
 ```
 
 La función es sencilla:
-1. leemos la fuente de datos, cargándola en un dataframe en memoria para extraer y manipular la data más fácilmente
-2. Creamos listas para almacenar nuestros documentos, identificadores de cada CVE y la metadata.
-3. Iteramos por cada hilera del data frame, ignorando el índice y manejando la hilera en sí
-4. En cada iteración vamos a normalizar la data y añadir el contenido normalizado a nuestra lista de documentos, añadir el identificador a su lista y añadir la severidad resuelta a la lista de metadata
-5. Ya teniendo nuestras listas en orden vamos a crear los embeddings de todos nuestros documentos y resolverlos en una lista de embeddings
-6. ChromaDB recomienda insertar en batches en lugar de un solo `add` con todos los registros. El tercer argumento de `range` es el paso, así que `range(0, len(ids), 5000)` produce los índices `0, 5000, 10000, ...`. En cada iteración, los slices `ids[i:i+batch_size]` toman los próximos 5.000 elementos. Con más de 93.000 registros, eso resulta en unas 19 llamadas a `collection.add`, donde la última toma los registros restantes (menos de 5.000)
 
-### Corriendo nuestro módulo de indexación
+1. Leemos la fuente de datos, cargándola en un dataframe en memoria para extraer y manipular la data más fácilmente.
+2. Renombramos la primera columna a `id` (esa que viene en blanco en el CSV original), así no toca tocar el archivo a mano.
+3. Creamos listas para almacenar los documentos, los identificadores de cada CVE y la metadata.
+4. Iteramos por cada fila del dataframe, ignorando el índice y trabajando con la fila en sí.
+5. En cada iteración construimos el documento para el embedding con `build_document`, añadimos el identificador a su lista y armamos el dict de metadata con el ID, el CVSS, la severidad y el nombre canónico (`cwe_name`).
+6. Ya con las listas en orden, generamos los embeddings de todos los documentos de una sola pasada.
+7. ChromaDB recomienda insertar en batches en vez de un solo `add` con todos los registros. El tercer argumento de `range` es el paso, así que `range(0, len(ids), 5000)` produce los índices `0, 5000, 10000, ...`. En cada iteración, los slices `ids[i:i+batch_size]` toman los próximos 5.000 elementos. Con más de 93.000 registros, eso son unas 19 llamadas a `collection.add`, donde la última se lleva los restantes (menos de 5.000).
 
-Ya tenemos la primera iteración de nuestro módulo de indexación listo, así que solo falta correrlo para probar que el resultado esté válido ante nuestra expectativa:
+## Corriendo el módulo de indexación
+
+Ya tenemos la primera iteración del módulo lista, así que solo falta correrlo para verificar que el resultado salga como esperamos:
 
 ```python
 # main.py
+from indexacion import ingest
+
+ingest("./data/cve.csv")
+print("Proceso completado")
+```
+
+## Código completo
+
+Para referencia, acá quedan los dos archivos completos.
+
+`indexacion.py`:
+
+```python
+import chromadb
+import pandas as pd
+from sentence_transformers import SentenceTransformer
+
+client = chromadb.PersistentClient(path="./chroma")
+
+collection = client.get_or_create_collection(name="CVEs")
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+
+def get_severity(cvss: str) -> str:
+    try:
+        score = float(cvss)
+    except (ValueError, TypeError):
+        return "Unknown"
+    match score:
+        case n if n >= 9.0 and n <= 10.0:
+            return "Critical"
+        case n if n >= 7.0 and n <= 8.9:
+            return "High"
+        case n if n >= 4.0 and n <= 6.9:
+            return "Medium"
+        case n if n >= 0.1 and n <= 3.9:
+            return "Low"
+        case _:
+            return "Unknown"
+
+
+def build_document(cve: pd.Series) -> str:
+    cwe = cve["cwe_name"] if pd.notna(cve["cwe_name"]) else ""
+    summary = cve["summary"] if pd.notna(cve["summary"]) else ""
+    return f"{cwe}. {summary}".strip(". ")
+
+
+def ingest(path: str):
+    df = pd.read_csv(path)
+    df.rename(columns={df.columns[0]: "id"}, inplace=True)
+
+    documents = []
+    ids = []
+    metadatas = []
+
+    for _, row in df.iterrows():
+        documents.append(build_document(row))
+        ids.append(str(row["id"]))
+        metadatas.append({
+            "cve_id": str(row["id"]),
+            "cvss": float(row["cvss"]) if pd.notna(row["cvss"]) else 0.0,
+            "severity": get_severity(row["cvss"]),
+            "cwe_name": str(row["cwe_name"]) if pd.notna(row["cwe_name"]) else "",
+        })
+
+    embeddings = model.encode(documents, show_progress_bar=True).tolist()
+
+    batch_size = 5000
+    for i in range(0, len(ids), batch_size):
+        collection.add(
+            ids=ids[i:i + batch_size],
+            documents=documents[i:i + batch_size],
+            embeddings=embeddings[i:i + batch_size],
+            metadatas=metadatas[i:i + batch_size],
+        )
+
+    print("Indexing phase complete")
+```
+
+`main.py`:
+
+```python
 from indexacion import ingest
 
 ingest("./data/cve.csv")
