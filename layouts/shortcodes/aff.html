@@ -1,0 +1,3 @@
+{{- $url := .Get 0 -}}
+{{- $text := .Get 1 | default $url -}}
+<a href="{{ $url }}" rel="sponsored nofollow noopener" target="_blank">{{ $text }}</a>

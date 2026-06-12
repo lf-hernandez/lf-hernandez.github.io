@@ -1,0 +1,18 @@
+{{- $url := .Get "url" | default "https://training.linuxfoundation.org/" -}}
+{{- if eq .Page.Language.Lang "es" -}}
+<div class="lf-discount">
+    <p class="lf-discount-title">30% de descuento en Linux Foundation Education</p>
+    <p>Usa el código <code class="lf-discount-code">LFHERNANDEZ</code> al pagar en
+        <a href="{{ $url }}" rel="sponsored nofollow noopener" target="_blank">Linux Foundation Education</a>
+        y obtén 30% de descuento en cursos y certificaciones. Funciona todo el año.
+        Como afiliado, recibo una comisión por las compras hechas con mi código.</p>
+</div>
+{{- else -}}
+<div class="lf-discount">
+    <p class="lf-discount-title">30% off Linux Foundation Education</p>
+    <p>Use code <code class="lf-discount-code">LFHERNANDEZ</code> at checkout on
+        <a href="{{ $url }}" rel="sponsored nofollow noopener" target="_blank">Linux Foundation Education</a>
+        for 30% off courses and certifications. It works all year round.
+        As an affiliate partner I earn a commission on purchases made with my code.</p>
+</div>
+{{- end -}}
