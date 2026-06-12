@@ -38,6 +38,8 @@ Talleres prácticos que he dado para [Orlando Devs](https://orlandodevs.com/) y 
 
 - Open Source Summit North America 2026, Minneapolis, MN
 - Orlando Code Camp 2026, Sanford, FL
-- Orlando Devs Ignite The Holidays, Orlando, FL
+- Orlando Devs Ignite The Holidays, Orlando, FL (2024 y 2025)
 - DevOps Days Tampa 2024, Tampa, FL
 - Meetups de Orlando Devs y Orlando DevOps, Orlando, FL
+
+Próximamente: Ignite The Holidays 2026, e Ignite The Summer, un nuevo evento de Orlando Devs que estoy ayudando a organizar.
