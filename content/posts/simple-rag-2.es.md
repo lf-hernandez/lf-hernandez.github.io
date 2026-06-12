@@ -29,7 +29,7 @@ ShowRssButtonInSectionTermList: true
 
 ## La meta
 
-En la primera parte hablamos del qué y el por qué de RAG. Ahora vamos a ver como es la implementacion. Como fuente de datos vamos a usar CVEs (Common Vulnerabilities and Exposures), un estándar internacional que cataloga vulnerabilidades de ciberseguridad de software y hardware. ¿Por qué CVEs? Se publican unos 130 por día en 2026, así que es casi garantizado que cualquier modelo no tenga el catálogo al día. Un caso ideal donde aumentar el contexto con RAG vale la pena.
+En la primera parte hablamos del qué y el por qué de RAG. Ahora vamos a ver como es la implementación. Como fuente de datos vamos a usar CVEs (Common Vulnerabilities and Exposures), un estándar internacional que cataloga vulnerabilidades de ciberseguridad de software y hardware. ¿Por qué CVEs? Se publican unos 130 por día en 2026, así que es casi garantizado que cualquier modelo no tenga el catálogo al día. Un caso ideal donde aumentar el contexto con RAG vale la pena.
 
 En esta parte nos enfocamos en la fase de indexación. Como mencioné antes, la indexación pasa offline; no toca correrla en cada consulta.
 
