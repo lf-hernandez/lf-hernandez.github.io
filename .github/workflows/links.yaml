@@ -58,6 +58,8 @@ jobs:
             --exclude "^https://marliere\.net"
             --exclude "^https://reddit\.com/submit"
             --exclude "^https://news\.ycombinator\.com/submitlink"
+            --exclude "^https://www\.awin1\.com"
+            --exclude "^https://tidd\.ly"
             --timeout 20
             --retry-wait-time 5
             --max-retries 3
