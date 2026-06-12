@@ -3,13 +3,7 @@ title: "About"
 layout: about
 ---
 
-My name is Luis Felipe Hernandez. I'm a computer programmer. I enjoy working with Go, Python, TypeScript/JavaScript, C, Node, PostgreSQL, Kubernetes, and Linux.
-
-I got into computers by building my first one in college to save money. That build worked on the first boot, which felt like magic, and it introduced me to Linux. Linux introduced me to the open source community, first lurking in IRC channels and eventually contributing. I studied Computer Science at Stony Brook University, got my start automating away a parking ticket tracking system in the university IT department, and the developers who noticed pulled me into software full time.
-
-Today I work as a senior software engineer and teach as an adjunct professor. In the summer of 2024 I was a mentee in the Linux Kernel Mentorship Program's Bug Fixing track, which remains one of the best experiences of my career. I hold the LFCS and CKAD certifications, and I speak at meetups and conferences about kernel development, unit testing with KUnit, and getting started in open source.
-
-I live in Orlando, Florida, where I also organize a local tech meetup. If you're in the area, come say hi.
+My name is Luis Felipe Hernandez. I'm a Senior Software Engineer at Nucleus Security, where I work on AI and data, and an educator. I enjoy working with Go, Python, TypeScript/JavaScript, C, Node, PostgreSQL, Kubernetes, and Linux.
 
 ## Partnerships
 
