@@ -15,6 +15,9 @@ Doy charlas sobre Linux, desarrollo del kernel, la comunidad de código abierto 
 **A Full-Circle, Linux-Inspired Journey**
 Una charla corta de diez minutos sobre cómo armar mi primer computador me llevó a Linux, cómo la formación de la Linux Foundation y la mentoría del kernel marcaron mi carrera, y cómo se ve ese camino para alguien que empieza hoy. Presentada en el LF Education Learning Lounge, Open Source Summit North America 2026.
 
+**Mind the Gap: Bridging the Gap Between Academia and Industry**
+Los egresados de Ciencias de la Computación suelen llegar a la industria sin habilidades prácticas de DevOps. A partir de mi experiencia diseñando y enseñando un curso universitario de DevOps: los retos que enfrentan los estudiantes, las habilidades y herramientas que más importan, y cómo los profesionales de la industria pueden ayudar a preparar a la próxima generación de desarrolladores. Presentada en Orlando Code Camp 2026.
+
 **Unit Testing the Linux Kernel**
 Una sesión ignite que presenta KUnit, el framework de pruebas unitarias del kernel: qué ofrece, por qué importa y cómo mejora la calidad y confiabilidad del desarrollo del kernel.
 
@@ -35,4 +38,6 @@ Talleres prácticos que he dado para [Orlando Devs](https://orlandodevs.com/) y 
 
 - Open Source Summit North America 2026, Minneapolis, MN
 - Orlando Code Camp 2026, Sanford, FL
+- Orlando Devs Ignite The Holidays, Orlando, FL
+- DevOps Days Tampa 2024, Tampa, FL
 - Meetups de Orlando Devs y Orlando DevOps, Orlando, FL
