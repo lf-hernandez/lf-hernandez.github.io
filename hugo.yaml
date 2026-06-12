@@ -121,6 +121,7 @@ languages:
 params:
   env: production
   description: "Felipe's corner of the web"
+  images: ["og-card.png"]
   author: felipe
   DateFormat: "January 2, 2006"
   defaultTheme: auto
