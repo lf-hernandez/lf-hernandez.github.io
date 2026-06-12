@@ -41,5 +41,3 @@ Talleres prácticos que he dado para [Orlando Devs](https://orlandodevs.com/) y 
 - Orlando Devs Ignite The Holidays, Orlando, FL (2024 y 2025)
 - DevOps Days Tampa 2024, Tampa, FL
 - Meetups de Orlando Devs y Orlando DevOps, Orlando, FL
-
-Próximamente: Ignite The Holidays 2026, e Ignite The Summer, un nuevo evento de Orlando Devs que estoy ayudando a organizar.
