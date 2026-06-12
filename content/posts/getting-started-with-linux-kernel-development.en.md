@@ -237,7 +237,7 @@ Breaking down the first target which should help understand the second as well:
 
 1. `make` is executed within the kernel build environment (/lib/modules/6.8.0-31-generic/build), which provides the necessary tools and scripts for compiling kernel modules.
 2. The `M` variable is used to let the kernel build system know the location (/linux_trees/felipe_mod/) of my module(s)
-3. By specifying the `modules` target (found in /lib/modules/<kernel-version>/build/Makefile), `make` compiles the kernel module(s) defined in `M`
+3. By specifying the `modules` target (found in `/lib/modules/<kernel-version>/build/Makefile`), `make` compiles the kernel module(s) defined in `M`
 
 Giving it a go:
 
