@@ -15,4 +15,4 @@ git clone --recurse-submodules git@github.com:lf-hernandez/lf-hernandez.github.i
 hugo server -D
 ```
 
-Requires Hugo extended v0.160.1+.
+Requires Hugo extended v0.163.1+.

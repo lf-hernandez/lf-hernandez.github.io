@@ -18,7 +18,7 @@ hugo server -D
 hugo --gc --minify --baseURL "https://lfhernandez.com/"
 ```
 
-Hugo extended version 0.160.1 is required (extended for Dart Sass support). No npm or other dependencies are needed.
+Hugo extended version 0.163.1 is required (extended for Dart Sass support). No npm or other dependencies are needed.
 
 After cloning, initialize the PaperMod submodule:
 ```bash
