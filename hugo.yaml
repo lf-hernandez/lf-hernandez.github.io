@@ -32,8 +32,8 @@ outputs:
 
 languages:
   en:
-    languageCode: en-us
-    languageName: English
+    locale: en-us
+    label: English
     weight: 1
     title: LFH
     params:
@@ -68,8 +68,8 @@ languages:
           weight: 50
 
   es:
-    languageCode: es-co
-    languageName: Español
+    locale: es-co
+    label: Español
     weight: 2
     title: LFH
     params:
