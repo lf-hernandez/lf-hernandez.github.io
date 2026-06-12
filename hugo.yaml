@@ -77,9 +77,10 @@ languages:
     weight: 2
     title: LFH
     params:
+      description: "El rincón web de Felipe"
       homeInfoParams:
         Title: "Hola, soy Felipe \U0001F44B"
-        Content: "Bienvenido a mi rincón de la web! Soy ingeniero de software y autor de este blog."
+        Content: "¡Bienvenido a mi rincón de la web! Soy ingeniero de software y autor de este blog."
       editPost:
         URL: "https://github.com/lf-hernandez/lf-hernandez.github.io/edit/main/content"
         Text: "Sugerir cambios"
