@@ -57,6 +57,10 @@ languages:
           name: Blog
           url: /posts/
           weight: 10
+        - identifier: talks
+          name: Talks
+          url: /talks/
+          weight: 15
         - identifier: search
           name: Search
           url: /search/
@@ -101,6 +105,10 @@ languages:
           name: Blog
           url: /es/posts/
           weight: 10
+        - identifier: talks
+          name: Charlas
+          url: /es/talks/
+          weight: 15
         - identifier: search
           name: Buscar
           url: /es/search/
