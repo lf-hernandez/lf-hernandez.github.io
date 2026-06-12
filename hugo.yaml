@@ -40,6 +40,10 @@ languages:
       homeInfoParams:
         Title: "Hi, I'm Felipe \U0001F44B"
         Content: "Welcome to my corner of the web! I'm a Software Engineer and author this blog."
+      editPost:
+        URL: "https://github.com/lf-hernandez/lf-hernandez.github.io/edit/main/content"
+        Text: "Suggest Changes"
+        appendFilePath: true
     menu:
       main:
         - identifier: about
@@ -76,6 +80,10 @@ languages:
       homeInfoParams:
         Title: "Hola, soy Felipe \U0001F44B"
         Content: "Bienvenido a mi rincón de la web! Soy ingeniero de software y autor de este blog."
+      editPost:
+        URL: "https://github.com/lf-hernandez/lf-hernandez.github.io/edit/main/content"
+        Text: "Sugerir cambios"
+        appendFilePath: true
     menu:
       main:
         - identifier: about
