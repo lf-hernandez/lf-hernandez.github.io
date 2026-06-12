@@ -5,6 +5,10 @@ layout: about
 
 My name is Luis Felipe Hernandez. I'm a computer programmer. I enjoy working with Go, Python, TypeScript/JavaScript, C, Node, PostgreSQL, Kubernetes, and Linux.
 
+## Partnerships
+
+I'm an affiliate partner of [Linux Foundation Education](https://training.linuxfoundation.org/). My code **LFHERNANDEZ** gets you 30% off courses and certifications all year round, and I earn a commission on purchases made with it. Sponsored posts on this site are always marked as such.
+
 {{< unsafe >}}
 <div style="display:flex;justify-content:space-evenly;margin-top:4rem;">
     <div

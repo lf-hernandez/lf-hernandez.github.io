@@ -39,7 +39,10 @@ languages:
     params:
       homeInfoParams:
         Title: "Hi, I'm Felipe \U0001F44B"
-        Content: "Welcome to my corner of the web! I'm a Software Engineer and author this blog."
+        Content: |-
+          Welcome to my corner of the web! I'm a Software Engineer and author this blog.
+
+          Partner perk: code **LFHERNANDEZ** gets you 30% off [Linux Foundation training and certifications](https://training.linuxfoundation.org/) all year.
       editPost:
         URL: "https://github.com/lf-hernandez/lf-hernandez.github.io/edit/main/content"
         Text: "Suggest Changes"
@@ -80,7 +83,10 @@ languages:
       description: "El rincón web de Felipe"
       homeInfoParams:
         Title: "Hola, soy Felipe \U0001F44B"
-        Content: "¡Bienvenido a mi rincón de la web! Soy ingeniero de software y autor de este blog."
+        Content: |-
+          ¡Bienvenido a mi rincón de la web! Soy ingeniero de software y autor de este blog.
+
+          Beneficio de aliado: el código **LFHERNANDEZ** te da 30% de descuento en [cursos y certificaciones de la Linux Foundation](https://training.linuxfoundation.org/) durante todo el año.
       editPost:
         URL: "https://github.com/lf-hernandez/lf-hernandez.github.io/edit/main/content"
         Text: "Sugerir cambios"
