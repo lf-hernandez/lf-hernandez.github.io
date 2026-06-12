@@ -20,5 +20,5 @@ My name is Luis Felipe Hernandez. I'm a computer programmer. I enjoy working wit
         data-share-badge-host="https://www.credly.com">
     </div>
 </div>
-<script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
 {{< /unsafe >}}
