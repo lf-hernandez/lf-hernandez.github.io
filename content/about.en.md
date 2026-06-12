@@ -3,7 +3,7 @@ title: "About"
 layout: about
 ---
 
-My name is Luis Felipe Hernandez. I'm a Senior Software Engineer at Nucleus Security, where I work on AI and data, and an educator. I enjoy working with Go, Python, TypeScript/JavaScript, C, Node, PostgreSQL, Kubernetes, and Linux.
+My name is Luis Felipe Hernandez. I'm a Senior Software Engineer at Nucleus Security, where I work on AI and data, and an educator.
 
 ## Partnerships
 
